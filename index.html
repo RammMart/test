@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tests Cognitivos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .test-button {
+            flex: 0 1 calc(33.333% - 20px);
+            min-width: 200px;
+            padding: 20px 40px;
+            font-size: 24px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: white;
+            transition: transform 0.3s ease, background-color 0.3s;
+            text-decoration: none;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .test-button:hover {
+            transform: translateY(-5px);
+            background-color: #45a049;
+        }
+
+        .test-button.completed {
+            background-color: #ff4444;
+        }
+        .test-button.completed:hover {
+            background-color: #cc0000;
+        }
+
+        .results-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .results-button:hover {
+            background-color: #45a049;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tests Neuropsicológicos</h1>
+        <div class="button-container" id="buttonContainer">
+            <a href="stroop.html" class="test-button" data-test="stroop">Test de Stroop</a>
+            <a href="digits.html" class="test-button" data-test="digits">Test de Dígitos</a>
+            <a href="digits_reverse.html" class="test-button" data-test="digits_reverse">Test de Dígitos Inversos</a>
+            <a href="gonogo.html" class="test-button" data-test="gonogo">Test Go-No-Go</a>
+            <a href="nback.html" class="test-button" data-test="nback">Test N-Back</a>
+            <a href="trail.html" class="test-button" data-test="trail">Trail Making Test</a>
+            <a href="symbol_coding.html" class="test-button" data-test="symbol_coding">Test de Codificación</a>
+            <a href="verbal_fluency.html" class="test-button" data-test="verbal_fluency">Fluidez Verbal</a>
+            <a href="bfq15.html" class="test-button" data-test="bfq15">Cuestionario BFQ-15</a>
+            <a href="buschke.html" class="test-button" data-test="buschke">Test de Buschke</a>
+        </div>
+        <a href="results.html" class="results-button">Ver Resultados</a>
+    </div>
+
+    <script src="results_manager.js"></script>
+    <script>
+        // Actualizar el estado de los botones al cargar la página
+        window.onload = function() {
+            const testStatus = ResultsManager.getTestStatus();
+            const buttons = document.querySelectorAll('.test-button');
+            
+            buttons.forEach(button => {
+                const testType = button.dataset.test;
+                if (testStatus[testType]) {
+                    button.classList.add('completed');
+                }
+            });
+        };
+    </script>
+</body>
+</html>
