@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Dígitos</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .digit-display {
+            font-size: 72px;
+            margin: 30px 0;
+            min-height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #userInput {
+            font-size: 24px;
+            padding: 10px;
+            margin: 20px 0;
+            text-align: center;
+            width: 200px;
+        }
+
+        #submitButton {
+            font-size: 20px;
+            padding: 10px 20px;
+        }
+
+        #results {
+            display: none; /* Oculto por defecto */
+            font-size: 20px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+        }
+
+        #results.visible {
+            display: block;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .instructions {
+            font-size: 18px;
+            margin: 20px 0;
+            text-align: left;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .instructions h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        #startButton {
+            font-size: 24px;
+            padding: 15px 30px;
+            margin: 20px 0;
+        }
+
+        .results-content {
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .results-content h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .results-content p {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test de Dígitos</h1>
+        <a href="index.html" class="back-button">Volver al menú principal</a>
+
+        <div class="instructions">
+            <h2>Instrucciones:</h2>
+            <p>1. Se te mostrarán secuencias de números, un dígito por segundo.</p>
+            <p>2. Comenzarás con una secuencia de 2 dígitos.</p>
+            <p>3. Después de cada secuencia, deberás escribir los números en el orden correcto.</p>
+            <p>4. Si aciertas, la siguiente secuencia tendrá un dígito más.</p>
+            <p>5. El test termina después de dos errores.</p>
+        </div>
+
+        <button id="startButton">Comenzar Test</button>
+
+        <div id="display" class="digit-display"></div>
+        
+        <div id="inputSection" style="display: none;">
+            <input type="text" id="userInput" placeholder="Escribe los números aquí" maxlength="15">
+            <button id="submitButton">Enviar</button>
+        </div>
+
+        <div id="results">
+            <div class="results-content">
+                <h2>Resultados</h2>
+                <p>Aquí se mostrarán los resultados del test.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="results_manager.js"></script>
+    <script src="digits.js"></script>
+</body>
+</html>
